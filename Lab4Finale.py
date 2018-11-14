@@ -98,26 +98,25 @@ def num_com(table, word, index):
         temp = temp.next
         
     return counter
-def avg_com(table, filename, function):
+def avg_com(table, file_name, method):
     '''
     gets average num of comparisons when looking for words in a file
     '''
     i = 0
     temp = dict()
-    with open(gl_file_name) as f: #change file to testFile when you want to test
+    with open(file_name) as f: 
             for line in f:
                  if "\n" in line:
                      line = line.replace("\n", "")
                  word = (line.lower()) #this line makes every word a lower case
-                 if function == 'a':
+                 if method == 'a':
                      i = div_hash_function(word)
-                 elif function == 'b': 
+                 if method == 'b': 
                      i = mad_hash_function(word)
                  temp[word] = num_com(table, word, i)
     total_comp = 0
     counter = 0
-    # Counts the total comparisons and divides it by 
-    # the number of searches
+    # Counts comparisons 
     for value in temp:
         total_comp += temp[value]
         counter += 1
@@ -129,7 +128,7 @@ def get_load_factor(table):
         Gets load factor by counting how many elements in table then dividing
         it by size
             '''
-        num_elements = count_lines(gl_file_name)
+        num_elements = 0
         
         for i in range(len(table)):
             temp = table[i]
